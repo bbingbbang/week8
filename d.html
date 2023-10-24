@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>나의 결말은?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+        body {
+            background-image: url('4.png');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            font-family: 'Noto Serif Korean', serif; 
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.3;
+        }
+
+        .up {
+            margin-top: 200px;
+        }
+
+        #result {
+            font-size: 2rem; 
+            margin-top: 55px; 
+            color: yellow;
+            text-decoration: underline;
+        }
+
+        #responseButton {
+            width: 260px;
+            height: 63px;
+            border-radius: 20px;
+            background: #F1FF55;
+            box-shadow: 0px 0px 10px 5px rgba(255, 229, 0, 0.70);
+            color: black;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;}
+
+        /* 버튼 스타일 변경 */
+        button {
+        	margin-top: 20px;
+            width: 260px;
+            height: 63px;  
+            border-radius: 20px;
+            background: #F1FF55;
+            box-shadow: 0px 0px 10px 5px rgba(255, 229, 0, 0.70);
+            font-weight: bold;color: black;
+            padding: 15px 25px; 
+            font-size: 1.5rem; 
+            cursor: pointer;
+			}
+		
+    </style>
+</head>
+<body>
+	<section>
+<div class="up">
+    <h3>"이제 운명을 확안 할 차례"</h3></div>
+<div>
+    <h1>당신의 이야기의 결말은<br>어떻게 되었을까?</h1>
+</div>
+<button onclick="showResult()"> 눌러서 결말 확인하기</button>
+<div id="result"></div>
+
+<div>
+    <a href="index.html"><button id="responseButton">처음부터 다시 도전하기</button></a>
+</div>
+	</section>
+<script type="text/javascript">
+    let adjective = ["모순적이게", "불행하게", "행복하게", "안타깝게", "아름답게", "모두의 축복을 받으며"];
+    let verb = [ "귀환" , "재력을 축적" , "명성을 획득" ,"결혼", ];
+    let noun = ["명예를 얻게", "결혼을 하게", "도망을 치게", "식사를 하게", "사업을 차리게", "영토를 하사받게", "사망하게", "새삶을 살게"];
+
+    function pick(arr) {
+        let a = arr.length;
+        let b = Math.random() * a;
+        let c = Math.floor(b);
+        return c;
+    }
+
+    function showResult() {
+        let selectedAdjective = adjective[pick(adjective)];
+        let selectedVerb = verb[pick(verb)];
+        let selectedNoun = noun[pick(noun)];
+
+        let resultElement = document.getElementById("result");
+        resultElement.innerHTML = "당신은 " + selectedAdjective + " " + selectedVerb + "하고 " + selectedNoun + "되었습니다.";
+    }
+</script>
+
+</body>
+</html>

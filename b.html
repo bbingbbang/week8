@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>깨어나세요 용사여</title>
+<style>
+		body {
+			background-image: url('3.png');
+			background-size: cover; 
+			overflow: hidden; 
+			margin: 0; 
+		}
+		#poetText {
+			z-index: 9;
+			position: absolute;
+			left: 300px;
+			top: 150px;
+			font-size: 1.8em;
+			font-family: 'Nanum Myeongjo', serif;
+			font-weight: 700;
+			color: #FFF;
+			line-height: 1.5;
+		}
+		.word {
+			opacity: 0;
+			animation: zoomIn 1s forwards;
+		}
+		@keyframes zoomIn {
+			to {
+				opacity: 1;
+			}
+		}
+		.button-container {
+			position: absolute;
+			bottom: 50px;
+			left: 50%;
+			margin-bottom:150px;
+			transform: translateX(-50%);
+		}
+		#responseButton {
+			width: 260px;
+			height: 63px;
+			border-radius: 20px;
+			background: #F1FF55;
+			box-shadow: 0px 0px 10px 5px rgba(255, 229, 0, 0.70);
+			color: black;
+			font-size: 1.5rem;
+			font-weight: bold;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="poetText"></div> 
+	<div class="button-container">
+		<a href="a.html"><button id="responseButton">운명 확인하기</button></a>
+	</div>
+	<audio controls autoplay>
+		<source src="universe.mp3" type="audio/mpeg"> 
+	</audio>
+	<script type="text/javascript">
+
+
+	
+		var poet = "그렇게 환생한 당신은 어릴 적의 기억을 떠올렸습니다. <br> 고향 마을의 조용한 풍경, 가족과의 행복한 순간, 모든 것이 떠올랐습니다. 그리고 다시 세계에 돌아왔을 때, <br>그 고향은 이미 사라져 버린 것이었습니다 .<br> <br> 고난과 역경을 거치면서, 당신은 자신의 능력을 발견하고 키워나갔습니다.<br> 그리고 마침내 용사로써의 역할을 맡았습니다. <br> 당신의 무기는 과거와는 다르게 힘차게 빛났고, <br>그 힘을 팀원과 함께 모아 드래곤에 맞서기로 했습니다. <br> <br> 여러 고난과 역경을 넘어 마침내 마닥트린 드래곤과의 전투를 치루게된 당신. <br> 드래곤과의 치열한 전투에서도 훌륭한 팀원들과의 협동심이 빛을 발했습니다. <br> <br> 마침내, 당신과 팀원들은 드래곤을 무찔렀고 드래곤 봉인에 성공하게 되었습니다. <br> : <br> 그렇게 그 이후에 당신은..";
+		var poetArr = poet.split(" ");
+
+		var myTimer = setInterval(print,500);
+		var s=0;
+
+		function print(){
+			var t= document.createElement("span");
+			t.innerHTML = poetArr[s] + " "
+			t.className = "word"
+			s++;
+			poetText.appendChild(t);
+			if(s == poetArr.length){
+				clearInterval(myTimer);
+			}
+		}
+
+		function randomBH(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script>
+</body>
+</html>

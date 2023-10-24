@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>깨어나세요 용사여</title>
+<style>
+		body {
+			background-image: url('1.png');
+			background-size: cover; 
+			overflow: hidden; 
+			margin: 0; 
+		}
+		#poetText {
+			z-index: 9;
+			position: absolute;
+			left: 300px;
+			top: 200px;
+			font-size: 1.8em;
+			font-family: 'Nanum Myeongjo', serif;
+			font-weight: 700;
+			color: #FFF;
+			line-height: 1.5;
+		}
+		.word {
+			opacity: 0;
+			animation: zoomIn 1s forwards;
+		}
+		@keyframes zoomIn {
+			to {
+				opacity: 1;
+			}
+		}
+		.button-container {
+			position: absolute;
+			bottom: 50px;
+			left: 50%;
+			margin-bottom:150px;
+			transform: translateX(-50%);
+		}
+		#responseButton {
+			width: 260px;
+			height: 63px;
+			border-radius: 20px;
+			background: #F1FF55;
+			box-shadow: 0px 0px 10px 5px rgba(255, 229, 0, 0.70);
+			color: black;
+			font-size: 1.5rem;
+			font-weight: bold;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="poetText"></div> 
+	<div class="button-container">
+		<a href="a.html"><button id="responseButton">응답하기</button></a>
+	</div>
+	<audio controls autoplay>
+		<source src="universe.mp3" type="audio/mpeg"> 
+	</audio>
+	<script type="text/javascript">
+
+
+	
+		var poet = "깨어나세요, 용사여... <br><br>  세계가 위험에 처해있습니다. <br><br> 사악한 드래곤이 깨어났고, 그 드래곤을 봉인해야 합니다. <br> 당신은 이 위험을 막을 용사로 선정되었습니다. <br><br> 이제 무기를 손에 쥐고 모험을 시작하세요. <br> 당신의 모험은 드래곤을 봉인하고 <br>세계의 운명을 바꿀 중요한 여정이 될 것입니다.";
+		var poetArr = poet.split(" ");
+
+		var myTimer = setInterval(print,500);
+		var s=0;
+
+		function print(){
+			var t= document.createElement("span");
+			t.innerHTML = poetArr[s] + " "
+			t.className = "word"
+			s++;
+			poetText.appendChild(t);
+			if(s == poetArr.length){
+				clearInterval(myTimer);
+			}
+		}
+
+		function randomBH(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script>
+</body>
+</html>
